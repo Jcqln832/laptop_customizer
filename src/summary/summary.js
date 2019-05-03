@@ -14,4 +14,5 @@ export default class Summary extends Component {
             </div>)
         )
     }
+    
 }

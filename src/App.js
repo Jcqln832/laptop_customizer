@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  FeaturesContainer from './features/FeaturesContainer';
-import Summary from './summary/summary';
+import SummaryContainer from './summary/SummaryContainer';
 import './App.css';
 
 class App extends Component {
@@ -36,10 +36,7 @@ class App extends Component {
     });
   }
 
-  render() {
-
-    const total = Object.keys(this.state.selected)
-          .reduce((acc, curr) => acc + this.state.selected[curr].cost, 0);       
+  render() {     
 
     return (
       <div className="App">
@@ -49,23 +46,12 @@ class App extends Component {
           <h5>Customize your laptop</h5>  
         </header>      
         <main>
-          <section className="main__form">
-            <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
-            <FeaturesContainer features = {this.props.features} 
-            selected = {this.state.selected} 
-            handleClick = {(feature,newValue) => this.updateFeature(feature,newValue)}/>
-          </section>
-          <section className="main__summary">
-            <h3>NEW GREENLEAF 2018</h3>
-            <Summary features = {this.props.features} selected = {this.state.selected}/>
-            <div className="summary__total">
-              <div className="summary__total__label">Your Price: </div>
-              <div className="summary__total__value">
-              { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                  .format(total) }
-              </div>
-            </div>
-          </section>
+            <FeaturesContainer 
+              features = {this.props.features} 
+              selected = {this.state.selected} 
+              handleClick = {(feature,newValue) => this.updateFeature(feature,newValue)}/>
+
+            <SummaryContainer features = {this.props.features} selected = {this.state.selected} />
         </main>
       </div>
     );
