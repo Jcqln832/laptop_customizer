@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  Options from './options';
+import  FeaturesList from './featureslist';
 
 export default class FeaturesContainer extends Component {
 
@@ -11,7 +11,7 @@ export default class FeaturesContainer extends Component {
         return <div className="feature" key={key}>
           <div className="feature__name">{key}</div>
           <ul className="feature__list">
-            <Options features = {this.props.features} 
+            <FeaturesList features = {this.props.features} 
                     selected = {this.props.selected} 
                     handleClick = {(feature,newValue) => this.props.handleClick(feature,newValue)}
                     part = {key} 
